@@ -193,6 +193,7 @@ var drawPointer = function() {
 		ctx.lineTo(x,y);
 		ctx.stroke();
     };
+
     document.getElementById("canvas").addEventListener("MSPointerDown", start, false);
 	document.getElementById("canvas").addEventListener("MSPointerMove", move, false);
 };        
@@ -215,11 +216,20 @@ var drawMouse = function() {
 			ctx.stroke();
 		}
 	};
+
+    var click = function(e) {
+        x = e.pageX;
+        y = e.pageY-44;
+        ctx.beginPath();
+        ctx.arc(x,y,20,0,2*Math.PI);
+        ctx.stroke();
+    }
 	var stop = function(e) {
 		clicked = 0;
 	};
     document.getElementById("canvas").addEventListener("mousedown", start, false);
 	document.getElementById("canvas").addEventListener("mousemove", move, false);
+    document.getElementById("canvas").addEventListener("mouseclick", circle, false)
 	document.addEventListener("mouseup", stop, false);
 };
 
